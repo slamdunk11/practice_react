@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "connected-react-router": "^6.9.1",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.3.0"
+  }
+}
