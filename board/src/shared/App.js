@@ -1,24 +1,21 @@
 import React from "react";
-import styled from "styled-components";
 
-import {BrowserRouter, Route} from "react-router-dom";
-import {ConnectedRouter} from "connected-react-router";
-
-import {Grid, Button, Text} from "../elements/index";
-import Header from "../components/Header";
+import { BrowserRouter, Route } from "react-router-dom";
 import PostList from "../pages/PostList";
-import Write from "..pages/PostList";
+import Header from "../components/Header";
+import { Grid, Button, Image, Text } from "../elements/index";
+import Write from "../pages/Write";
 
 function App() {
   return (
     <React.Fragment>
-      <Grid>
-        <Header></Header>
-        <ConnectedRouter>
-          <Route path="/" exact component={PostList} />
-          <Route path="write" exact component={Write} />
-        </ConnectedRouter>
-      </Grid>
+       <Grid>
+            <Header></Header>
+            <BrowserRouter>
+                <Route path="/" exact component={PostList} />
+                <Route path="write" exact component={Write} />
+            </BrowserRouter>
+        </Grid>
     </React.Fragment>
   );
 }

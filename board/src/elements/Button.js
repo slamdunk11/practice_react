@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-    const {is_float, width, height, margin, padding, bg, color,  _onClick} = props;
+    const {is_float, width, height, margin, padding, bg, color, children, _onClick} = props;
 
     const styles = {
         width: width,
@@ -17,14 +17,14 @@ const Button = (props) => {
     if (is_float) {
         return(
             <React.Fragment>
-                <FloatButton></FloatButton>
+                <FloatButton>{children}</FloatButton>
             </React.Fragment>
         )
     }
 
     return (
         <React.Fragment>
-            <ElButton {...styles}></ElButton>
+            <ElButton {...styles}>{children}</ElButton>
         </React.Fragment>
     );
 

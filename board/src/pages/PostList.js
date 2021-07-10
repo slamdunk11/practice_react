@@ -3,22 +3,24 @@ import { Grid, Button, Image, Text } from "../elements/index";
 
 const PostList = () => {
     return(
-        <Grid>
+        <React.Fragment>
             <Grid>
                 <Grid>
                     <Grid>
-                        <Image>사진</Image>
-                        <Text>닉네임</Text>
+                        <Grid>
+                            <Image>사진</Image>
+                            <Text>닉네임</Text>
+                        </Grid>
                     </Grid>
+                    <Grid>
+                        <Button>글</Button>
+                        <Button>시리즈</Button>
+                        <Button>소개</Button>
+                    </Grid>
+                    <Grid>postlist</Grid>
                 </Grid>
-                <Grid>
-                    <Button>글</Button>
-                    <Button>시리즈</Button>
-                    <Button>소개</Button>
-                </Grid>
-                <Grid>postlist</Grid>
             </Grid>
-        </Grid>
+        </React.Fragment>
     );
 }
 
