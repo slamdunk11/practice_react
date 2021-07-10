@@ -1,11 +1,11 @@
 import React, {useState, useRef} from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 
 function Connection() {
 
-    // const [word, setWord] = useState("가나");
-    // const [result, setResult] = useState("");
+    const [word, setWord] = useState("가나");
+    const [result, setResult] = useState("");
     // const wordInput = useRef("");
     // const Compare = () => {
     //     if(wordInput.current.value.charAt(0) === word.charAt(word.length-1)){
@@ -19,27 +19,29 @@ function Connection() {
     //     }
     // }
 
-    const [inputs, setInputs] = useState({
-        word: "가나",
-        input: "",
-        result: "",
-    })
+    // const [inputs, setInputs] = useState({
+    //     word: "가나",
+       
+    //     result: "",
+    // })
+
+    const [input, setInput] = useState("");
+
+    const handleChange = (e) => {
+        setInput(e.target.value)
+    }
 
      const Compare = () => {
-        if(inputs.input.charAt(0) === inputs.word.charAt(inputs.word.length-1)){
-            setInputs({
-                word: inputs.value,
-                input: "",
-                result: "딩동댕",
-            })
-            console.log(inputs.input.charAt(0), inputs.word.charAt(inputs.word.length-1));
+        if(input.charAt(0) === word.charAt(word.length-1)){
+            setWord(input)
+            setResult("딩동댕")
+            setInput("")
+            
             return;
  
         }else{
-            setInputs({
-                input: "",
-                result: "땡",
-            })
+            setResult("땡")
+            setInput("")
             return;
         }
     }
@@ -47,12 +49,12 @@ function Connection() {
  
     return(
         <div>
-            <div>{inputs.word}</div>
+            <div>{word}</div>
             <div>
-                <input value={inputs.input}/>
+                <input onChange={handleChange} value={input}/>
                 <button onClick={Compare}>입력!</button>
             </div>
-            <div>{inputs.result}</div>
+            <div>{result}</div>
         </div>
     );
 }
