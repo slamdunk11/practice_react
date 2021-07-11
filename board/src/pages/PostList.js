@@ -6,9 +6,9 @@ const PostList = () => {
         <React.Fragment>
             <Grid>
                 <Grid>
-                    <Grid>
-                        <Grid>
-                            <Image>사진</Image>
+                    <Grid is_flex>
+                        <Grid is_flex>
+                            <Image width="100px" height="100px"> </Image>
                             <Text>닉네임</Text>
                         </Grid>
                     </Grid>

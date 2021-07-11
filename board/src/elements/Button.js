@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-    const {is_float, width, height, margin, padding, bg, color, children, _onClick} = props;
+    const {shape, is_float, width, height, margin, padding, bg, color, children, _onClick} = props;
 
     const styles = {
         width: width,
@@ -17,14 +17,22 @@ const Button = (props) => {
     if (is_float) {
         return(
             <React.Fragment>
-                <FloatButton>{children}</FloatButton>
+                <FloatButton {...styles}>{children}</FloatButton>
+            </React.Fragment>
+        )
+    }
+
+    if(shape ==="round") {
+        return(
+            <React.Fragment>
+                <RoundButton {...styles}>{children}</RoundButton>
             </React.Fragment>
         )
     }
 
     return (
         <React.Fragment>
-            <ElButton {...styles}>{children}</ElButton>
+            <RectangleButton {...styles}>{children}</RectangleButton>
         </React.Fragment>
     );
 
@@ -32,25 +40,41 @@ const Button = (props) => {
 
 Button.defaultProps = {
     is_float: false,
+    shape: "round",
     width: "110px",
     height: "40px",
     margin: false,
     padding: false,
-    bg: false,
+    bg: "#FFFFFF",
     color: "#121212",
+    
 }
 
-const ElButton = styled.button`
+const RectangleButton = styled.button`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
     ${(props) => props.margin? `margin: ${props.margin};`: ""};
     ${(props) => props.padding? `padding: ${props.padding};`: ""};
-    ${(props) => props.bg? `backgroud-color:${props.bg};`: ""};
+    ${(props) => props.bg? `background-color:${props.bg};`: ""};
     ${(props) => props.color? `color:${props.color};`: ""};
    
     border-radius: 5%;
-    border: none;
+    
+`;
+
+const RoundButton = styled.button`
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+
+    ${(props) => props.margin? `margin: ${props.margin};`: ""};
+    ${(props) => props.padding? `padding: ${props.padding};`: ""};
+    ${(props) => props.bg? `background-color:${props.bg};`: ""};
+    ${(props) => props.color? `color:${props.color};`: ""};
+
+    border-radius: 20px;
+    border: 0.5px solid black;
+    outline:none;
 `;
 
 const FloatButton = styled.button`

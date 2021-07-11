@@ -4,13 +4,15 @@ import {Grid, Button, Image} from "../elements/index";
 
 const Header = () => {
     return (
-        <Grid>
-            <Grid>아이디</Grid>
-            <Grid>
-                <Button>버튼이다...</Button>
-                <Image></Image>
+        <React.Fragment>
+            <Grid is_flex width="auto" padding="15px">
+                <Grid>아이디</Grid>
+                <Grid is_flex width="auto">
+                    <Button shape="round" margin="20px">새 글 작성</Button>
+                    <Image></Image>
+                </Grid>
             </Grid>
-        </Grid>
+        </React.Fragment>
     );
 }
 
