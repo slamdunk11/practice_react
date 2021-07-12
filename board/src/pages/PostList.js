@@ -17,7 +17,9 @@ const PostList = () => {
                         <Button>시리즈</Button>
                         <Button>소개</Button>
                     </Grid>
-                    <Grid>postlist</Grid>
+                    <Grid>
+                        map...Post
+                    </Grid>
                 </Grid>
             </Grid>
         </React.Fragment>
