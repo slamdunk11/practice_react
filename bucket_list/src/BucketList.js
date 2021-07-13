@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const BucketList = (props) => {
     const my_lists = props.list;
 
@@ -8,7 +9,9 @@ const BucketList = (props) => {
         <ListStyle>
             {my_lists.map((list, index) => {
                 return(
-                    <ItemStyle key={index}>
+                    <ItemStyle onClick={() => {
+                        props.history.push('/detail');
+                    }} key={index}>
                         {list}
                     </ItemStyle>
                 )
