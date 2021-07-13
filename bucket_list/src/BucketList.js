@@ -1,16 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
+//redux hook을 불러옵니다.
+import { useDispatch, useSelector } from "react-redux";
+
 
 const BucketList = (props) => {
-    const my_lists = props.list;
+    // const my_lists = props.list;
+
+    //useSelector 훅을 통해 리덕스 스토어의 상태에 접근할 수 있다.
+    const bucket_list = useSelector(state => state.bucket.list);
 
     return(
         <ListStyle>
-            {my_lists.map((list, index) => {
+            {bucket_list.map((list, index) => {
                 return(
-                    <ItemStyle onClick={() => {
-                        props.history.push('/detail');
+                    <ItemStyle
+                    className="list_item"
+                    onClick={() => {
+                        props.history.push('/detail/'+index);
                     }} key={index}>
                         {list}
                     </ItemStyle>
