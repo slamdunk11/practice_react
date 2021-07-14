@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-    const {is_flex, width, margin, padding, bg, center, children, _onClick} = props;
+    const {is_flex, max_width, width, margin, padding, bg, center, children, _onClick} = props;
 
     const styles = {
         is_flex: is_flex,
         width: width,    //div의 width에 props로 받아온 width를 넣는다
+        max_width: max_width,
         margin: margin,
         padding: padding,
         bg: bg,
@@ -39,6 +40,7 @@ const GridBox = styled.div`
             : ""
         )}
     width: ${(props) => props.width};
+    ${(props) => props.max_width? `max-width: ${props.max_width};` : ""};
     height: 100%;
     box-sizing: border-box;
     

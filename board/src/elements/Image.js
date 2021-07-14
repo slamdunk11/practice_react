@@ -11,6 +11,14 @@ const Image = (props) => {
         height: height,
     }
 
+    if(shape === "rectangle"){
+        return (
+        <AspectOutter>
+            <AspectInner {...styles}></AspectInner>
+        </AspectOutter>
+            );
+    }
+
     return(
         <React.Fragment>
             <RoundImage {...styles}>{children}</RoundImage>
@@ -34,6 +42,19 @@ const RoundImage = styled.div`
     box-shadow: 1px 1px 6px 1px #eee;
     border-radius: 50%;
     vertical-align: middle;
+    
+`;
+
+const AspectOutter = styled.div`
+    width: 100%;
+    min-width: 250px;
+`;
+
+const AspectInner = styled.div`
+    position: relative;
+    padding-top: 75%;
+    background-image: url("${(props) => props.src}");
+    background-size: cover;
     
 `;
 
