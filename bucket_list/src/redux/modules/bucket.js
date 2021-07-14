@@ -4,6 +4,7 @@
 const LOAD = 'bucket/LOAD';
 const CREATE = 'bucket/CREATE';
 const DELETE = 'bucket/DELETE';
+const UPDATE = 'bucket/UPDATE';
 
 //initialState 초기값
 const initialState = {
@@ -21,6 +22,10 @@ export const createBucket = (bucket) => { //bucket은 텍스트
 
 export const deleteBucket = (bucket) => {
     return {type: DELETE,bucket};
+}
+
+export const updateBucket = (idx, num, bucket) => {
+    return {type: UPDATE, idx, num, bucket};
 }
 
 //Reducer
@@ -42,8 +47,14 @@ export default function reducer(state = initialState, action = {}) {
                if(idx !== action.bucket){
                    return l;
                }
+        
             });
             return {list: bucket_list};
+        }
+
+        case "bucket/UPDATE" : {
+            const updated_bucket_list = state.list.splice(action.idx, action.num, action.bucket)
+            return {list: updated_bucket_list};
         }
         
         default:
