@@ -1,20 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, Text } from "../elements/index";
+import { Grid, Text, Image, Button } from "../elements/index";
 
-const Post = () => {
+const Post = (props) => {
     return(
         <React.Fragment>
             <Grid>
-                <Grid>
-                    <Text>제목</Text>
+                <Grid is_flex>
+                    <Grid width="auto"><Text>{props.title}</Text></Grid>
+                    <Grid width="auto"><Button>수정하기</Button></Grid>
                 </Grid>
                 <Grid>
-                    <Text>내용</Text>
+                    <Text>{props.contents}</Text>
                 </Grid>
+                <Grid>
+                    <Image src={props.image_url} shape="rectangle"/>
+                </Grid>
+                <Grid>{props.insert_dt}</Grid>
             </Grid>
         </React.Fragment>
     )
+}
+
+Post.defaultProps = {
+    title: "제목 입력하세요",
+    contents: "내용 입력하세요",
+    image_url: "https://blog.kakaocdn.net/dn/bokozL/btqEzAJHJvd/QxXBJbKmOf956K858SmmM1/img.png",
+    insert_dt: "2021-02-02 10:00:00"
 }
 
 export default Post;
