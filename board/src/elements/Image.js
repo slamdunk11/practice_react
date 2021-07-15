@@ -10,6 +10,11 @@ const Image = (props) => {
         width: width,
         height: height,
     }
+    if(!src){
+
+        return null;
+
+    }
 
     if(shape === "rectangle"){
         return (
