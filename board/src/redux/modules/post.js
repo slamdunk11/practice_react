@@ -1,6 +1,7 @@
 //post.js
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import { firestore } from "../../shared/firebase";
 
 
 //Action
@@ -23,6 +24,33 @@ const initialPost = {
     insert_dt: "2021-02-02 10:00:00",
 }
 
+const getPostFB = () => {
+    return function (dispatch, getState, {history}) {
+        const postDB = firestore.collection("post");
+        postDB.get().then((docs) => {
+            let post_list = [];
+
+            // forEach는 각각 배열 요소에 함수 실행
+            docs.forEach((doc) => {
+                console.log(doc.id, doc.data());
+
+                let _post = doc.data();
+                let post = {
+                    title: _post.title,
+                    contents: _post.contents,
+                    image_url: _post.image_url,
+                    insert_dt: _post.insert_dt
+                }
+                post_list.push(post);
+            })
+
+            //리스트 확인하기
+            console.log(post_list, "리스트 확인하기");
+            dispatch(setPost(post_list));
+        })
+    }
+}
+
 //리듀서
 export default handleActions(
     {
@@ -41,6 +69,7 @@ export default handleActions(
 const actionCreators = {
     setPost,
     addPost,
+    getPostFB,
 };
 
 export {actionCreators};
