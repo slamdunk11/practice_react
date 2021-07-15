@@ -14,7 +14,7 @@ const Post = (props) => {
 
     return(
         <React.Fragment>
-            <Grid>
+            <Grid padding="10px 0px 18px 0px" border_bottom="1px solid #eee">
                 <Grid is_flex>
                     <Grid width="auto"><Text>{props.title}</Text></Grid>
                     <Grid  width="auto">
