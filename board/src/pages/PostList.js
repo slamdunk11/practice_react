@@ -8,11 +8,14 @@ import {actionCreators as postActions} from "../redux/modules/post";
 
 
 const PostList = (props) => {
-    const {history} = props;
+    
     const dispatch = useDispatch();
     const post_list = useSelector((state) => state.post.list);
 
-    // console.log(post_list);
+    console.log(post_list);
+
+    const {history} = props;
+    
 
     React.useEffect(() => {
         dispatch(postActions.getPostFB());
@@ -49,7 +52,7 @@ const PostList = (props) => {
                         <Grid>
                             {/* <Post></Post> */}
                             {post_list.map((p, idx) => {
-                                return <Post key={idx} {...p} />
+                                return <Post key={p.id} {...p}/>
                             })}
                         </Grid>
                     </Grid>

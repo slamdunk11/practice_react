@@ -18,6 +18,7 @@ const initialState = {
 
 //게시글 하나에는 어떤 정보가 있어야 하는 지 하나 만들어두기
 const initialPost = {
+    id: 0,
     image_url: "",
     title: "제목이다",
     contents: "내용이다",
@@ -32,10 +33,33 @@ const getPostFB = () => {
 
             // forEach는 각각 배열 요소에 함수 실행
             docs.forEach((doc) => {
-                console.log(doc.id, doc.data());
+                // console.log(doc.id, doc.data());
 
-                let _post = doc.data();
+                //아래의 형식 바꾸는 걸 좀 더 고수처럼 형식 맞춰주는 법
+                // let _post = doc.data();
+
+                // //['comment_cnt', 'contents', ..]
+                // let post = Object.keys(_post).reduce((acc, cur) => {
+                    
+                //     if(cur.indexOf("user_") !== -1){
+                //         return{...acc, user_info:{...acc.user_info}, [cur]: _post[cur]};
+                //     }
+                //     return {...acc, [cur]: _post[cur]}
+                // }, {id: doc.id, user_info: {}});
+                //앞의 중괄호, 처음거는 딕셔너리 형식으로 하고 싶으니까 
+
+                //firebase랑 여기 배열이랑 형식이 안 맞아서 
+                //맞추는 거 _post, post
+                //acc 맨 처음엔 {id: doc.id} 딕셔너리 나온다, 
+                //cur 키값-current_cnt키값 contents 등 키값이 따라 나옴
+                //[cur] 변수 안에 키 값이 담긴 거니까 이렇게 대괄호 이용해주면 키값 넣을 수 있다
+                let _post = {
+                    id: doc.id,
+                    ...doc.data()};
+                    // doc.data 파이어 스토어에서 가지고 온 값
+
                 let post = {
+                    id: doc.id,
                     title: _post.title,
                     contents: _post.contents,
                     image_url: _post.image_url,
@@ -55,7 +79,8 @@ const getPostFB = () => {
 export default handleActions(
     {
         [SET_POST]: (state, action) => produce(state, (draft) => {
-
+            draft.list = action.payload.post_list;
+            // 배열 갈아끼워주기!!
         }),
 
         [ADD_POST]: (state, action) => produce(state, (draft) => {
@@ -63,7 +88,7 @@ export default handleActions(
         })
     },
     initialState
-)
+);
 
 //action creator export
 const actionCreators = {

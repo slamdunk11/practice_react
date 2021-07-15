@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid, Text, Image, Button } from "../elements/index";
+import { useDispatch } from "react-redux";
+import {actionCreators as postActions} from "../redux/modules/post";
 
 const Post = (props) => {
+    const dispatch = useDispatch();
     return(
         <React.Fragment>
             <Grid>
