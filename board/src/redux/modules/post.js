@@ -101,7 +101,14 @@ const deletePostFB = (post_id) => {
 const getPostFB = () => {
     return function (dispatch, getState, {history}) {
         const postDB = firestore.collection("post");
-        postDB.get().then((docs) => {
+
+        //시간 순 정렬을 위해 쓰임
+        // let query = postDB.orderBy("insert_dt", "desc").limit(2);
+        let query = postDB.orderBy("insert_dt", "desc")
+
+        query.get().then(docs => {
+
+        // postDB.get().then((docs) => {
             let post_list = [];
 
             // forEach는 각각 배열 요소에 함수 실행
