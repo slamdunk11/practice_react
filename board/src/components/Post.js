@@ -2,16 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import { Grid, Text, Image, Button } from "../elements/index";
 import { useDispatch } from "react-redux";
+import { history } from "../redux/configStore";
 import {actionCreators as postActions} from "../redux/modules/post";
 
 const Post = (props) => {
+    
     const dispatch = useDispatch();
+
+    // const post_id = props.match.params.id;
+    
+
     return(
         <React.Fragment>
             <Grid>
                 <Grid is_flex>
                     <Grid width="auto"><Text>{props.title}</Text></Grid>
-                    <Grid width="auto"><Button>수정하기</Button></Grid>
+                    <Grid  width="auto">
+                        <Button _onClick={() => {history.push(`/write/${props.id}`)}}>수정하기</Button>
+                        <Button _onClick={() => {
+                            dispatch(postActions.deletePostFB(props.id));
+                        }}>삭제하기</Button>
+                    </Grid>
+
                 </Grid>
                 <Grid>
                     <Text>{props.contents}</Text>

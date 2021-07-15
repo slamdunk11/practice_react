@@ -18,7 +18,10 @@ const PostList = (props) => {
     
 
     React.useEffect(() => {
-        dispatch(postActions.getPostFB());
+        if(post_list.length===0){
+            dispatch(postActions.getPostFB());
+        }
+        
         console.log(post_list);
     }, []);
     //effect를 수행하고 (mount하거나 unmount할 때) 
@@ -30,7 +33,7 @@ const PostList = (props) => {
                 <Grid>아이디</Grid>
                 <Grid is_flex width="auto">
                     <Button shape="round" margin="20px" _onClick={()=>{
-                        history.replace("/write");
+                        history.push("/write");
                     }}>새 글 작성</Button>
                     <Image></Image>
                 </Grid>
@@ -45,9 +48,9 @@ const PostList = (props) => {
                             </Grid>
                         </Grid>
                         <Grid>
-                            <Button>글</Button>
+                            {/* <Button>글</Button>
                             <Button>시리즈</Button>
-                            <Button>소개</Button>
+                            <Button>소개</Button> */}
                         </Grid>
                         <Grid>
                             {/* <Post></Post> */}

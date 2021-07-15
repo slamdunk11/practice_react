@@ -3,13 +3,14 @@ import styled from "styled-components";
 import Grid from "./Grid";
 
 const Input = (props) => {
-    const {multilines, type, placeholder, _onChange} = props
+    const {multilines, type, placeholder, _onChange, value} = props
 
 
     if(multilines) {
         return(
             <ElTextarea 
             rows={22}
+            value={value}
             placeholder={placeholder}
             onChange={_onChange}>
             </ElTextarea>
@@ -18,6 +19,7 @@ const Input = (props) => {
     return(
         <ElInput 
         placeholder={placeholder}
+        value={value}
         onChange={_onChange}/>
     )
 }

@@ -28,6 +28,10 @@ function App() {
             //   <Write history={this.props.history}/>
             // )} 
             />
+             <Route path="/write/:id" 
+            exact component={Write}
+            
+            />
         </ConnectedRouter>
 
       </Grid>
