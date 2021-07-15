@@ -50,11 +50,11 @@ const Write = (props) => {
     }
     return(
         <React.Fragment>
-            <Grid margin="15px 0px 0px 0px">
+            <Grid border_bottom="1px solid #eee" margin="15px 0px 0px 0px">
                 <Input value={title} _onChange={changeTitle} placeholder="제목을 입력하세요"/>
                 <Input value={contents} _onChange={changeContents} multilines placeholder="당신의 이야기를 적어보세요"/>
             </Grid>
-            <Grid is_flex>
+            <Grid padding="15px" is_flex>
                 <Grid width="auto">
                     <Button _onClick={() => {
                         history.replace("/");
