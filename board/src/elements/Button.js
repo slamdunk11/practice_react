@@ -17,7 +17,7 @@ const Button = (props) => {
     if (is_float) {
         return(
             <React.Fragment>
-                <FloatButton {...styles}>{children}</FloatButton>
+                <FloatButton {...styles} onClick={_onClick}>{children}</FloatButton>
             </React.Fragment>
         )
     }
@@ -25,7 +25,7 @@ const Button = (props) => {
     if(shape ==="round") {
         return(
             <React.Fragment>
-                <RoundButton {...styles}>{children}</RoundButton>
+                <RoundButton {...styles} onClick={_onClick}>{children}</RoundButton>
             </React.Fragment>
         )
     }
@@ -47,6 +47,7 @@ Button.defaultProps = {
     padding: false,
     bg: "#FFFFFF",
     color: "#121212",
+    _onClick: () => {},
     
 }
 
