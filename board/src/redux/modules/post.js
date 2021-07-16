@@ -98,6 +98,20 @@ const deletePostFB = (post_id) => {
     }
 }
 
+const getOnePostFB = (id) => {
+    return function(dispatch, getState, {history}){
+        const postDB = firestore.collection("post");
+        postDB.doc(id).get().then(doc => {
+            let _post = doc.data();
+            let post = Object.keys(_post).reduce((acc, cur) =>{
+                return{...acc, [cur]: _post[cur]};
+            },
+            {id: doc.id, user_info: {}});
+            dispatch(setPost([post]));
+        })
+    }
+}
+
 const getPostFB = () => {
     return function (dispatch, getState, {history}) {
         const postDB = firestore.collection("post");

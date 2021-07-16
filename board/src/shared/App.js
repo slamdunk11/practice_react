@@ -7,6 +7,7 @@ import PostList from "../pages/PostList";
 import Header from "../components/Header";
 import { Grid, Button, Image, Text } from "../elements/index";
 import Write from "../pages/Write";
+import Detail from "../pages/Detail";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             exact component={Write}
             
             />
+            {/* <Route path="/detail/:id" exact component={Detail} /> */}
         </ConnectedRouter>
 
       </Grid>

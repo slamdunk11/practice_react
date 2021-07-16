@@ -76,6 +76,10 @@ const RoundButton = styled.button`
     border-radius: 20px;
     border: 0.5px solid black;
     outline:none;
+
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
 `;
 
 const FloatButton = styled.button`

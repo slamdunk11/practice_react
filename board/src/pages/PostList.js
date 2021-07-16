@@ -48,14 +48,21 @@ const PostList = (props) => {
                             </Grid>
                         </Grid>
                         <Grid>
-                            {/* <Button>글</Button>
+                            <Button>글</Button>
                             <Button>시리즈</Button>
-                            <Button>소개</Button> */}
+                            <Button>소개</Button>
+                            
                         </Grid>
                         <Grid>
                             {/* <Post></Post> */}
                             {post_list.map((p, idx) => {
-                                return <Post key={p.id} {...p}/>
+                                return (
+                                    <Grid >
+                                        <Post key={p.id} {...p} />
+                                    </Grid>
+
+                                );
+                                
                             })}
                         </Grid>
                     </Grid>
